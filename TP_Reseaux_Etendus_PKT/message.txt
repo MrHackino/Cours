@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Building configuration...
 
 Current configuration : 1898 bytes
