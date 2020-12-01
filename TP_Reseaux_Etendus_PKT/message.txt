@@ -134,3 +134,141 @@ line vty 0 4
 !
 !
 end
+=======
+Building configuration...
+
+Current configuration : 1898 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Router
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/0.10
+ encapsulation dot1Q 10
+ ip address 172.17.0.3 255.255.248.0
+ standby 0 ip 172.17.0.1
+!
+interface GigabitEthernet0/0/0.20
+ encapsulation dot1Q 20
+ ip address 172.17.8.3 255.255.248.0
+ ip helper-address 172.17.7.254
+ standby 0 ip 172.17.8.1
+!
+interface GigabitEthernet0/0/0.30
+ encapsulation dot1Q 30
+ ip address 172.17.16.3 255.255.248.0
+ ip helper-address 172.17.7.254
+ standby 0 ip 172.17.16.1
+!
+interface GigabitEthernet0/0/0.40
+ encapsulation dot1Q 40
+ ip address 172.17.24.3 255.255.248.0
+ ip helper-address 172.17.7.254
+ standby 0 ip 172.17.24.1
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/2
+ no ip address
+ duplex auto
+ speed auto
+!
+interface Serial0/1/0
+ no ip address
+ encapsulation frame-relay
+ ip ospf network broadcast
+!
+interface Serial0/1/0.301 point-to-point
+ ip address 192.168.200.6 255.255.255.252
+ frame-relay interface-dlci 301
+ ip ospf network broadcast
+ clock rate 2000000
+!
+interface Serial0/1/1
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Serial0/2/0
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Serial0/2/1
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router ospf 1
+ log-adjacency-changes
+ network 192.168.200.0 0.0.0.3 area 0
+ network 172.17.0.0 0.0.7.255 area 2
+ network 172.17.8.0 0.0.7.255 area 2
+ network 172.17.16.0 0.0.7.255 area 2
+ network 172.17.24.0 0.0.7.255 area 2
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+>>>>>>> 32f027c47c7a18d77e914de2c53acce9cdf6f348
