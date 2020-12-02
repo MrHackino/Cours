@@ -1,0 +1,107 @@
+!
+version 12.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Router
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+ipv6 unicast-routing
+!
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface FastEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial0/0/0
+ no ip address
+ ipv6 address 2050:4::2/124
+ ipv6 enable
+ ipv6 ospf 1 area 9
+ clock rate 2000000
+!
+interface Serial0/0/1
+ no ip address
+ ipv6 address 2050:1::1/124
+ ipv6 enable
+ clock rate 2000000
+!
+interface Serial0/1/0
+ no ip address
+ ipv6 address 2050:3::1/124
+ ipv6 enable
+ ipv6 ospf 1 area 9
+ clock rate 2000000
+!
+interface Serial0/1/1
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ipv6 router ospf 1
+ router-id 3.3.3.3
+ log-adjacency-changes
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+no cdp run
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
