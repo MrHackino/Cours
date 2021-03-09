@@ -1,0 +1,19 @@
+---
+- name: Nextcloud server deployment
+  hosts: "127.0.0.1"
+  become: True
+  become_method: sudo
+  roles:
+    - role: nextcloud
+
+ post_tasks:
+    - name: Nextcloud is UP!
+      debug:
+        msg: 
+          - "Your Nextcloud at http://{{ fqdn }} is ready."
+          - "Login with user: {{ nc_admin }} and password: {{ nc_passwd }} "
+          - "Other secrets you'll find in the directory {{ credential_store }} "
+          - "Autodestruction in..."
+          - "3..."
+          - "2..."
+          - "1..."

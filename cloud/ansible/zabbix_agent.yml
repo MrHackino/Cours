@@ -1,0 +1,7 @@
+---
+- name: Zabbix agent
+  hosts: "127.0.0.1"
+  become: True
+  become_method: sudo
+  roles:
+    - role: zabbix_agent

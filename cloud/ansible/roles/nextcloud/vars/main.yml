@@ -1,0 +1,26 @@
+deps: 
+  - avconv
+  - apache2
+  - ffmpeg
+  - php7.3
+  - php-curl
+  - php-dompdf
+  - php-json
+  - php-mbstring
+  - php-posix
+  - php-session
+  - php-xml
+  - php-zip
+  - php-pgsql
+  - php-bz2
+  - php-intl
+  - php-ldap
+  - php-memcached
+  - php-redis
+  - php-exif
+  - php-imagick
+  - php-pnctl
+
+postgres_run_dir: '/var/run/postgresql'
+postgres_allowed_ipv4: '127.0.0.1/32'
+postgres_allowed_ipv6: '::1/128'

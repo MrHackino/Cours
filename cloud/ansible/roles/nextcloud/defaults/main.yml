@@ -1,0 +1,5 @@
+---
+
+postgresql_version: 12
+postgres_user:      postgres
+pgdata:             /var/lib/postgresql/data/pgdata

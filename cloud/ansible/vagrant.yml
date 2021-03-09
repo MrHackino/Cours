@@ -1,0 +1,6 @@
+- name: vagrant deployment task
+  hosts: vagrant_host
+  become: True
+  become_method: sudo
+  roles:
+    - role: vagrant

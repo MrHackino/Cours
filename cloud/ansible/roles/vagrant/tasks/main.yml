@@ -1,0 +1,27 @@
+- name: ensure ntpd is the latest version 
+  community.general.apk: 
+    update_cache: yes
+    name: ntpd
+    state: latest
+  notify: 
+    - restart
+  become: True
+
+- name: restart ntpd
+    service: ntpd
+    state: restarted
+    enabled: yes
+    become: True
+
+- name: Install apache2
+  community.general.apk:
+    name: apache2
+    state: latest
+    update_cache: yes
+
+- name: "Move hello_world to www folder"
+  template:
+    src: "hello_world.html"
+    dest: "/var/www/html/hello_world.html"
+    mode: 0644
+  become: True
